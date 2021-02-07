@@ -2,6 +2,7 @@
 
 module Api
   module V1
+    # :nodoc:
     class TestController < BaseController
       def update
         render json: { message: 'update endpoint' }

@@ -9,27 +9,30 @@ RSpec.describe 'Test API Authentication', type: :request do
   end
 
   context 'when the user provides a valid api token' do
-    let(:headers) { { 'Authorization' => 'Bearer test_api_key, api_key=API_KEY' }}
+    let(:headers) { { 'Authorization' => 'Bearer test_api_key, api_key=API_KEY' } }
 
     it 'allows the user to pass' do
-      expect(response).to be_successful
+      expect(response.successful?).to be(true)
+    end
+
+    it 'returns the correct message' do
       expect(response.body).to eq({ 'message' => 'create endpoint' }.to_json)
     end
   end
 
   context 'when the user provides an invalid key' do
-    let(:headers) { { 'Authorization' => 'Bearer test_api_key, api_key=FAKE_KEY' }}
+    let(:headers) { { 'Authorization' => 'Bearer test_api_key, api_key=FAKE_KEY' } }
 
     it 'does not allow to user to access' do
-      expect(response).to be_unauthorized
+      expect(response.unauthorized?).to be(true)
     end
   end
 
   context 'when the user provides an invalid token' do
-    let(:headers) { { 'Authorization' => 'Bearer fake_api_key, api_key=API_KEY' }}
+    let(:headers) { { 'Authorization' => 'Bearer fake_api_key, api_key=API_KEY' } }
 
     it 'does not allow to user to access' do
-      expect(response).to be_unauthorized
+      expect(response.unauthorized?).to be(true)
     end
   end
 end

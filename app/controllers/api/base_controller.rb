@@ -1,6 +1,7 @@
 # frozen_string_literal: false
 
 module Api
+  # :nodoc:
   class BaseController < ApplicationController
     include ActionController::HttpAuthentication::Token::ControllerMethods
     include ActionController::HttpAuthentication::Basic::ControllerMethods
