@@ -11,14 +11,10 @@ module Api
 
     def authenticate
       authenticate_or_request_with_http_token do |token, options|
-        env_token = ENV.fetch(options[:api_key] || '', '')
+        env_token = ENV.fetch(options['api_key'] || '', '')
 
         ActiveSupport::SecurityUtils.secure_compare(token, env_token)
       end
-    end
-
-    def current_user
-      @current_user ||= authenticate
     end
   end
 end
