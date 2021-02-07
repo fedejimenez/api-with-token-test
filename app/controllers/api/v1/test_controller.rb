@@ -4,11 +4,9 @@ module Api
   module V1
     # :nodoc:
     class TestController < BaseController
-      def update
-        render json: { message: 'update endpoint' }
-      end
-
-      def create
+      def create_or_update
+        byebug
+        
         render json: { message: 'create endpoint' }
       end
     end
