@@ -2,7 +2,7 @@ class CreateTests < ActiveRecord::Migration[6.0]
   def change
     create_table :tests do |t|
       t.string :bk_organization_id
-      t.string :source_uuid, unique: true
+      t.string :source_uuid, unique: true, null: false
       t.integer :transactions_summarized_count
       t.float :summarized_net_sales
       t.string :journal_entry_template

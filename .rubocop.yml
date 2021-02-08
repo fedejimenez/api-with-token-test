@@ -118,6 +118,9 @@ Metrics/ModuleLength:
   Exclude:
     - 'spec/**/*.rb'
 
+Metrics/MethodLength:
+  Max: 20
+
 RSpec/FilePath:
   Exclude:
     - spec/rubocop/cop/internal_affairs/redundant_let_rubocop_config_new_spec.rb
