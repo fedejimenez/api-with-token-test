@@ -19,3 +19,21 @@ curl --request POST -H "Authorization: Token abc123, api_key=API_KEY_TEST" https
 ```
 
 Or it can be set up using a tool like Postman, adding a Header: `Authorization => Token abc123, api_key=API_KEY_TEST`
+
+**Example test request with token and params**
+```
+curl --request POST 'https://api-with-token-test.herokuapp.com/api/v1/test' \
+--header 'Authorization: Token abc123, api_key=API_KEY_TEST' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "source_uuid": "test_uuid_123",
+    "post_raw_data": {
+        "field1": "value_1",
+        "field2":{
+            "field2a": "value2a",
+            "field2b": "value2b"
+        }
+    }
+}'
+```
+
