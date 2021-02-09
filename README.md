@@ -28,10 +28,10 @@ curl --request POST 'https://api-with-token-test.herokuapp.com/api/v1/test' \
 --data-raw '{
     "source_uuid": "test_uuid_123",
     "post_raw_data": {
-        "field1": "value_1",
-        "field2":{
-            "field2a": "value2a",
-            "field2b": "value2b"
+        "currency": "USD",
+        "inputs":{
+            "testing": "test",
+            "location": "test"
         }
     }
 }'
