@@ -29,7 +29,7 @@ module Api
         end
       end
 
-      def test_params
+      def test_params # rubocop:disable Metrics/MethodLength
         params.permit(:bk_organization_id,
                       :source_uuid,
                       :transactions_summarized_count,
@@ -43,11 +43,32 @@ module Api
                       :bk_external_id,
                       :status,
                       post_raw_data: [
-                        :field1,
-                        { field2: %i[
-                          field2a
-                          field2b
-                        ] }
+                        :je_id,
+                        { inputs: %i[
+                          testing
+                          location
+                          channel_ids
+                          shop_domain
+                          qbo_realm_id
+                          start_of_day
+                          summary_date
+                          bk_client_key
+                          bk_external_id
+                          channel_filter
+                          bk_organization_id
+                          journal_entry_template
+                        ] },
+                        :je_date,
+                        :je_type,
+                        { returns: [:amount] },
+                        :currency,
+                        :build_number,
+                        :qbo_realm_id,
+                        :bk_external_id,
+                        :je_private_note,
+                        :source_report_url,
+                        { cost_of_goods_sold: [:amount] },
+                        { inventory_reduction: [:amount] }
                       ])
       end
     end
