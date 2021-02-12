@@ -15,7 +15,7 @@ RSpec.describe 'Test API Authentication', type: :request do
     context 'when creating a resource' do
       let(:test) { build(:test) }
       let(:valid_attributes) { FactoryBot.attributes_for(:test) }
-      let(:post_request) { post '/api/v1/test', params: valid_attributes, headers: headers }
+      let(:post_request) { post '/api/v1/test', params: { test: valid_attributes }, headers: headers }
 
       it 'creates a new test object' do
         post_request
@@ -32,7 +32,7 @@ RSpec.describe 'Test API Authentication', type: :request do
 
     context 'when updating the resource' do
       let!(:test) { create(:test) }
-      let(:post_request) { post '/api/v1/test', params: { source_uuid: test.source_uuid, status: 'updated' }, headers: headers }
+      let(:post_request) { post '/api/v1/test', params: { test: { source_uuid: test.source_uuid, status: 'updated' } }, headers: headers }
 
       it 'updates the record' do
         post_request
@@ -42,6 +42,8 @@ RSpec.describe 'Test API Authentication', type: :request do
     end
 
     context 'when the source_uuid is missing' do
+      let(:post_request) { post '/api/v1/test', params: { test: { status: 'updated' } }, headers: headers }
+
       it 'returns a validation failure message' do
         post_request
 
