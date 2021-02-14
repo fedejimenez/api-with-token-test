@@ -76,6 +76,7 @@ module Api
                                        { manual_payments:
                                          [:amount, { subcategories: %i[label amount] }] },
                                        { paypal_payments: [:amount] },
+                                       { stripe_payments_clearing: [:amount] },
                                        { shopify_payments:
                                          [:amount, { subcategories: %i[label amount] }] },
                                        { unknown_payments: [:amount] },
