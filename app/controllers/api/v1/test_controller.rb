@@ -84,7 +84,9 @@ module Api
                                        :source_report_url,
                                        { gratuity_collected: [:amount] },
                                        { sales_tax_collected:
-                                         [:amount, { subcategories: %i[rate label amount taxableSales country state] }] },
+                                         [:amount,
+                                          { subcategories: %i[rate label amount taxableSales
+                                                              country state] }] },
                                        { third_party_gateway_payments:
                                          [:amount, { subcategories: %i[label amount] }] }
                                      ])
